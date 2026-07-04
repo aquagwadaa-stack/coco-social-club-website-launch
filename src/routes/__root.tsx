@@ -11,22 +11,23 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { CookieBanner } from "../components/site/cookie-banner";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">Cette page n’existe pas</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+          Le contenu recherché a peut-être été déplacé.
         </p>
         <div className="mt-6">
           <Link
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Go home
+            Revenir à l’accueil
           </Link>
         </div>
       </div>
@@ -45,10 +46,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+          Cette page n’a pas pu être chargée
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Une erreur est survenue. Tu peux réessayer ou revenir à l’accueil.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -58,13 +59,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
             }}
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            Try again
+            Réessayer
           </button>
           <a
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
-            Go home
+            Revenir à l’accueil
           </a>
         </div>
       </div>
@@ -78,10 +79,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Coco Social Club — Sport & bien-être au Moule, Guadeloupe" },
-      { name: "description", content: "Là où le sport rencontre le bien-être. EMS, coaching, yoga, cryolipolyse, massages au Moule en Guadeloupe. Réserve ta séance découverte." },
+      {
+        name: "description",
+        content:
+          "Là où le sport rencontre le bien-être. EMS, coaching, yoga, cryolipolyse, massages au Moule en Guadeloupe. Réserve ta séance découverte.",
+      },
       { name: "author", content: "Coco Social Club" },
       { property: "og:title", content: "Coco Social Club — Là où le sport rencontre le bien-être" },
-      { property: "og:description", content: "Un lieu unique au Moule pour bouger, se renforcer, se détendre et prendre soin de soi." },
+      {
+        property: "og:description",
+        content:
+          "Un lieu unique au Moule pour bouger, se renforcer, se détendre et prendre soin de soi.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Coco Social Club" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -108,12 +117,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>
       <body>
         {children}
+        <CookieBanner />
         <Scripts />
       </body>
     </html>

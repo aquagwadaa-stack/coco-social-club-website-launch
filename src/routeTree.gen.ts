@@ -17,8 +17,10 @@ import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LeClubRouteImport } from './routes/le-club'
+import { Route as GalerieRouteImport } from './routes/galerie'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
+import { Route as BoutiqueRouteImport } from './routes/boutique'
 import { Route as BienEtreRouteImport } from './routes/bien-etre'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -62,6 +64,11 @@ const LeClubRoute = LeClubRouteImport.update({
   path: '/le-club',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GalerieRoute = GalerieRouteImport.update({
+  id: '/galerie',
+  path: '/galerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -70,6 +77,11 @@ const ContactRoute = ContactRouteImport.update({
 const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
   id: '/confidentialite',
   path: '/confidentialite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BoutiqueRoute = BoutiqueRouteImport.update({
+  id: '/boutique',
+  path: '/boutique',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BienEtreRoute = BienEtreRouteImport.update({
@@ -86,8 +98,10 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bien-etre': typeof BienEtreRoute
+  '/boutique': typeof BoutiqueRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
+  '/galerie': typeof GalerieRoute
   '/le-club': typeof LeClubRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
@@ -100,8 +114,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bien-etre': typeof BienEtreRoute
+  '/boutique': typeof BoutiqueRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
+  '/galerie': typeof GalerieRoute
   '/le-club': typeof LeClubRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
@@ -115,8 +131,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bien-etre': typeof BienEtreRoute
+  '/boutique': typeof BoutiqueRoute
   '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
+  '/galerie': typeof GalerieRoute
   '/le-club': typeof LeClubRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
@@ -131,8 +149,10 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/bien-etre'
+    | '/boutique'
     | '/confidentialite'
     | '/contact'
+    | '/galerie'
     | '/le-club'
     | '/mentions-legales'
     | '/planning'
@@ -145,8 +165,10 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/bien-etre'
+    | '/boutique'
     | '/confidentialite'
     | '/contact'
+    | '/galerie'
     | '/le-club'
     | '/mentions-legales'
     | '/planning'
@@ -159,8 +181,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/bien-etre'
+    | '/boutique'
     | '/confidentialite'
     | '/contact'
+    | '/galerie'
     | '/le-club'
     | '/mentions-legales'
     | '/planning'
@@ -174,8 +198,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BienEtreRoute: typeof BienEtreRoute
+  BoutiqueRoute: typeof BoutiqueRoute
   ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
+  GalerieRoute: typeof GalerieRoute
   LeClubRoute: typeof LeClubRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   PlanningRoute: typeof PlanningRoute
@@ -244,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeClubRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/galerie': {
+      id: '/galerie'
+      path: '/galerie'
+      fullPath: '/galerie'
+      preLoaderRoute: typeof GalerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -256,6 +289,13 @@ declare module '@tanstack/react-router' {
       path: '/confidentialite'
       fullPath: '/confidentialite'
       preLoaderRoute: typeof ConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/boutique': {
+      id: '/boutique'
+      path: '/boutique'
+      fullPath: '/boutique'
+      preLoaderRoute: typeof BoutiqueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bien-etre': {
@@ -278,8 +318,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BienEtreRoute: BienEtreRoute,
+  BoutiqueRoute: BoutiqueRoute,
   ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
+  GalerieRoute: GalerieRoute,
   LeClubRoute: LeClubRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   PlanningRoute: PlanningRoute,
@@ -292,3 +334,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

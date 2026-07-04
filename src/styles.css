@@ -72,12 +72,12 @@
 :root {
   --radius: 1rem;
   /* Coco palette */
-  --cream: oklch(0.958 0.018 78);          /* #F7F0E5 warm cream */
-  --cream-warm: oklch(0.985 0.012 78);     /* #FFFDF9 off white */
-  --brown-deep: oklch(0.28 0.028 55);      /* #392E27 deep brown */
-  --taupe: oklch(0.68 0.022 40);           /* #A8978F rosy taupe */
-  --beige: oklch(0.82 0.033 70);           /* #D7C4AE natural beige */
-  --ice: oklch(0.94 0.025 220);            /* light iced blue accent */
+  --cream: oklch(0.958 0.018 78); /* #F7F0E5 warm cream */
+  --cream-warm: oklch(0.985 0.012 78); /* #FFFDF9 off white */
+  --brown-deep: oklch(0.28 0.028 55); /* #392E27 deep brown */
+  --taupe: oklch(0.68 0.022 40); /* #A8978F rosy taupe */
+  --beige: oklch(0.82 0.033 70); /* #D7C4AE natural beige */
+  --ice: oklch(0.94 0.025 220); /* light iced blue accent */
 
   --background: var(--cream-warm);
   --foreground: var(--brown-deep);
@@ -161,7 +161,25 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, .font-serif {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--beige);
+    color: var(--brown-deep);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
     font-family: var(--font-serif);
     font-weight: 400;
     letter-spacing: -0.01em;
@@ -192,13 +210,23 @@
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @utility marquee {

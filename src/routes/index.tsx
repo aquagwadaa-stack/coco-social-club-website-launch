@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Sparkles, Waves, Flame, Snowflake } from "lucide-react";
+import { ArrowUpRight, Flame, ShoppingBag, Snowflake, Sparkles, Waves } from "lucide-react";
 import { SiteLayout } from "@/components/site/layout";
 import heroImg from "@/assets/hero-rooftop.jpg";
 import emsImg from "@/assets/ems-training.jpg";
@@ -28,22 +28,32 @@ function Index() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--brown-deep)]/30 via-transparent to-[color:var(--brown-deep)]/70" />
         <div className="relative container-editorial pb-20 pt-32 md:pb-28 text-[color:var(--cream-warm)]">
-          <p className="text-xs uppercase tracking-[0.4em] opacity-90 fade-up">Le Moule — Guadeloupe</p>
+          <p className="text-xs uppercase tracking-[0.4em] opacity-90 fade-up">
+            Le Moule — Guadeloupe
+          </p>
           <h1 className="mt-6 font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] fade-up">
-            Coco<br />
+            Coco
+            <br />
             <span className="italic opacity-90">Social Club</span>
           </h1>
           <p className="mt-8 font-serif italic text-2xl md:text-3xl max-w-2xl fade-up">
             Là où le sport rencontre le bien-être.
           </p>
           <p className="mt-4 max-w-xl text-base md:text-lg opacity-90 fade-up">
-            Un lieu unique au Moule pour bouger, se renforcer, se détendre et prendre soin de soi dans une ambiance chaleureuse.
+            Un lieu unique au Moule pour bouger, se renforcer, se détendre et prendre soin de soi
+            dans une ambiance chaleureuse.
           </p>
           <div className="mt-10 flex flex-wrap gap-3 fade-up">
-            <Link to="/reservation" className="btn-pill bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)] hover:scale-[1.02]">
+            <Link
+              to="/reservation"
+              className="btn-pill bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)] hover:scale-[1.02]"
+            >
               Réserver une séance <ArrowUpRight className="h-4 w-4" />
             </Link>
-            <Link to="/le-club" className="btn-pill border border-[color:var(--cream-warm)]/60 text-[color:var(--cream-warm)] hover:bg-[color:var(--cream-warm)]/10">
+            <Link
+              to="/le-club"
+              className="btn-pill border border-[color:var(--cream-warm)]/60 text-[color:var(--cream-warm)] hover:bg-[color:var(--cream-warm)]/10"
+            >
               Découvrir le Club
             </Link>
           </div>
@@ -55,12 +65,18 @@ function Index() {
         <div className="flex whitespace-nowrap marquee gap-14 font-serif italic text-2xl text-foreground/70">
           {Array.from({ length: 2 }).map((_, i) => (
             <div key={i} className="flex gap-14 shrink-0">
-              <span>Bouger</span><span>·</span>
-              <span>Respirer</span><span>·</span>
-              <span>Partager</span><span>·</span>
-              <span>Se renforcer</span><span>·</span>
-              <span>Se détendre</span><span>·</span>
-              <span>Prendre soin de soi</span><span>·</span>
+              <span>Bouger</span>
+              <span>·</span>
+              <span>Respirer</span>
+              <span>·</span>
+              <span>Partager</span>
+              <span>·</span>
+              <span>Se renforcer</span>
+              <span>·</span>
+              <span>Se détendre</span>
+              <span>·</span>
+              <span>Prendre soin de soi</span>
+              <span>·</span>
             </div>
           ))}
         </div>
@@ -70,7 +86,9 @@ function Index() {
       <section className="container-editorial py-24 md:py-32">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">01 — L'expérience Coco</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
+              01 — L'expérience Coco
+            </p>
             <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
               Ici, nous avons imaginé <em className="italic text-taupe">une aventure.</em>
             </h2>
@@ -80,16 +98,33 @@ function Index() {
             </p>
           </div>
           <div className="lg:col-span-7 grid grid-cols-2 gap-4 md:gap-6">
-            <img src={rooftopImg} alt="Rooftop tropical" className="rounded-[2rem] aspect-[4/5] object-cover w-full mt-10" loading="lazy" />
-            <img src={communityImg} alt="Communauté" className="rounded-[2rem] aspect-[4/5] object-cover w-full" loading="lazy" />
-            <img src={aerialImg} alt="Yoga aérien" className="rounded-[2rem] aspect-[4/5] object-cover w-full col-span-2" loading="lazy" />
+            <img
+              src={rooftopImg}
+              alt="Rooftop tropical"
+              className="rounded-[2rem] aspect-[4/5] object-cover w-full mt-10"
+              loading="lazy"
+            />
+            <img
+              src={communityImg}
+              alt="Communauté"
+              className="rounded-[2rem] aspect-[4/5] object-cover w-full"
+              loading="lazy"
+            />
+            <img
+              src={aerialImg}
+              alt="Yoga aérien"
+              className="rounded-[2rem] aspect-[4/5] object-cover w-full col-span-2"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
 
       {/* TWO UNIVERSES */}
       <section className="container-editorial pb-24 md:pb-32">
-        <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">02 — Deux univers complémentaires</p>
+        <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
+          02 — Deux univers complémentaires
+        </p>
         <div className="grid md:grid-cols-2 gap-6">
           <UniverseCard
             to="/sport"
@@ -112,10 +147,17 @@ function Index() {
       <section className="bg-[color:var(--brown-deep)] text-[color:var(--cream-warm)] py-24 md:py-32">
         <div className="container-editorial grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
-            <img src={emsImg} alt="Séance EMS coachée" className="rounded-[2rem] object-cover w-full aspect-[4/5]" loading="lazy" />
+            <img
+              src={emsImg}
+              alt="Séance EMS coachée"
+              className="rounded-[2rem] object-cover w-full aspect-[4/5]"
+              loading="lazy"
+            />
           </div>
           <div className="lg:col-span-6">
-            <p className="text-xs uppercase tracking-[0.28em] opacity-70 mb-6">Électrostimulation EMS</p>
+            <p className="text-xs uppercase tracking-[0.28em] opacity-70 mb-6">
+              Électrostimulation EMS
+            </p>
             <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
               20 minutes pour des <em className="italic">résultats visibles.</em>
             </h2>
@@ -138,7 +180,10 @@ function Index() {
                 « 20 minutes = jusqu'à 4 heures de sport traditionnel. »
               </p>
             </div>
-            <Link to="/seance-decouverte-ems" className="btn-pill mt-8 bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)]">
+            <Link
+              to="/seance-decouverte-ems"
+              className="btn-pill mt-8 bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)]"
+            >
               Réserver ma séance découverte gratuite <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
@@ -148,7 +193,9 @@ function Index() {
       {/* ROOFTOP CLASSES */}
       <section className="container-editorial py-24 md:py-32">
         <div className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">Cours collectifs · Rooftop</p>
+          <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
+            Cours collectifs · Rooftop
+          </p>
           <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
             Bouger, respirer, <em className="italic">partager.</em>
           </h2>
@@ -167,7 +214,10 @@ function Index() {
             "Abdos Choco Fessiers Coco",
             "Pole Dance",
           ].map((c) => (
-            <div key={c} className="rounded-full border border-border bg-cream px-5 py-4 text-center text-sm">
+            <div
+              key={c}
+              className="rounded-full border border-border bg-cream px-5 py-4 text-center text-sm"
+            >
               {c}
             </div>
           ))}
@@ -182,21 +232,79 @@ function Index() {
         <div className="container-editorial">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">Soins bien-être</p>
+              <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
+                Soins bien-être
+              </p>
               <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
                 Prendre soin de soi <em className="italic">peut être simple.</em>
               </h2>
             </div>
-            <Link to="/bien-etre" className="btn-pill border border-border text-foreground hover:bg-background">
+            <Link
+              to="/bien-etre"
+              className="btn-pill border border-border text-foreground hover:bg-background"
+            >
               Voir tous les soins <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <WellnessCard image={tanImg} icon={<Sparkles className="h-4 w-4" />} title="Tan Bronzage" copy="Un bronzage uniforme, naturel et sans UV." />
-            <WellnessCard image={wellnessImg} icon={<Snowflake className="h-4 w-4" />} title="Cryolipolyse" copy="Une technologie non invasive qui cible les zones localisées par le froid." />
-            <WellnessCard image={rooftopImg} icon={<Waves className="h-4 w-4" />} title="Pressothérapie" copy="Une méthode favorisant le drainage et la sensation de jambes légères." />
-            <WellnessCard image={massageImg} icon={<Flame className="h-4 w-4" />} title="Massages & Soins" copy="Détente, récupération et lâcher-prise dans un cocon chaleureux." />
+            <WellnessCard
+              image={tanImg}
+              icon={<Sparkles className="h-4 w-4" />}
+              title="Tan Bronzage"
+              copy="Un bronzage uniforme, naturel et sans UV."
+            />
+            <WellnessCard
+              image={wellnessImg}
+              icon={<Snowflake className="h-4 w-4" />}
+              title="Cryolipolyse"
+              copy="Une technologie non invasive qui cible les zones localisées par le froid."
+            />
+            <WellnessCard
+              image={rooftopImg}
+              icon={<Waves className="h-4 w-4" />}
+              title="Pressothérapie"
+              copy="Une méthode favorisant le drainage et la sensation de jambes légères."
+            />
+            <WellnessCard
+              image={massageImg}
+              icon={<Flame className="h-4 w-4" />}
+              title="Massages & Soins"
+              copy="Détente, récupération et lâcher-prise dans un cocon chaleureux."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* BOUTIQUE */}
+      <section className="container-editorial py-24 md:py-32">
+        <div className="grid items-stretch overflow-hidden rounded-[2rem] bg-[color:var(--brown-deep)] text-[color:var(--cream-warm)] lg:grid-cols-2">
+          <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16">
+            <ShoppingBag className="h-7 w-7 opacity-70" />
+            <p className="mt-8 text-xs uppercase tracking-[0.28em] opacity-65">La boutique</p>
+            <h2 className="mt-4 font-serif text-5xl leading-[1.02] md:text-6xl">
+              Les essentiels <em className="italic">Coco.</em>
+            </h2>
+            <p className="mt-5 max-w-lg leading-7 opacity-75">
+              Découvre notre sélection Nutripure, les serviettes brodées et les accessoires qui
+              accompagnent tes séances.
+            </p>
+            <Link
+              to="/boutique"
+              className="btn-pill mt-8 self-start bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)]"
+            >
+              Découvrir la boutique <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="grid min-h-[30rem] grid-cols-2 bg-cream p-5 md:p-8">
+            <div className="m-2 flex flex-col justify-end rounded-[1.5rem] bg-[color:var(--beige)] p-6 text-[color:var(--brown-deep)]">
+              <p className="text-xs uppercase tracking-[0.24em] opacity-60">Nutrition</p>
+              <p className="mt-2 font-serif text-3xl">Nutripure</p>
+            </div>
+            <div className="m-2 mt-14 flex flex-col justify-end rounded-[1.5rem] bg-background p-6 text-[color:var(--brown-deep)]">
+              <p className="text-xs uppercase tracking-[0.24em] opacity-60">Collection</p>
+              <p className="mt-2 font-serif text-3xl">Serviettes brodées</p>
+            </div>
           </div>
         </div>
       </section>
@@ -210,7 +318,10 @@ function Index() {
         <p className="mt-6 max-w-xl mx-auto text-lg text-muted-foreground">
           Choisis ton expérience, réserve ton créneau et rejoins la communauté Coco Social Club.
         </p>
-        <Link to="/reservation" className="btn-pill mt-10 bg-primary text-primary-foreground text-base px-8 py-4">
+        <Link
+          to="/reservation"
+          className="btn-pill mt-10 bg-primary text-primary-foreground text-base px-8 py-4"
+        >
           Je réserve ma séance <ArrowUpRight className="h-4 w-4" />
         </Link>
       </section>
@@ -233,7 +344,12 @@ function UniverseCard({
 }) {
   return (
     <Link to={to} className="group relative block overflow-hidden rounded-[2rem] aspect-[4/5]">
-      <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-700" loading="lazy" />
+      <img
+        src={image}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
+        loading="lazy"
+      />
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
       <div className="relative h-full flex flex-col justify-end p-8 text-[color:var(--cream-warm)]">
         <p className="text-xs uppercase tracking-[0.3em] opacity-90">{eyebrow}</p>
@@ -247,7 +363,17 @@ function UniverseCard({
   );
 }
 
-function WellnessCard({ image, icon, title, copy }: { image: string; icon: React.ReactNode; title: string; copy: string }) {
+function WellnessCard({
+  image,
+  icon,
+  title,
+  copy,
+}: {
+  image: string;
+  icon: React.ReactNode;
+  title: string;
+  copy: string;
+}) {
   return (
     <article className="bg-background rounded-[1.5rem] overflow-hidden border border-border/60">
       <img src={image} alt="" className="aspect-[4/5] w-full object-cover" loading="lazy" />

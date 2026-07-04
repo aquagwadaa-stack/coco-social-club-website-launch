@@ -1,14 +1,20 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { BrandMark } from "./brand-mark";
 
 export function SiteFooter() {
   return (
     <footer className="bg-[color:var(--brown-deep)] text-[color:var(--cream-warm)] mt-24">
       <div className="container-editorial py-16 grid gap-12 lg:grid-cols-4">
         <div className="lg:col-span-2">
-          <div className="flex items-baseline gap-2">
-            <span className="font-serif text-3xl">Coco</span>
-            <span className="text-[10px] uppercase tracking-[0.3em] opacity-70">Social Club</span>
+          <div className="flex items-center gap-3">
+            <BrandMark className="h-14 w-14" />
+            <span className="leading-none">
+              <span className="block font-serif text-3xl">Coco</span>
+              <span className="mt-1.5 block text-[9px] uppercase tracking-[0.3em] opacity-70">
+                Social Club
+              </span>
+            </span>
           </div>
           <p className="font-serif italic text-2xl mt-6 max-w-md leading-snug">
             Là où le sport rencontre le bien-être.
@@ -46,6 +52,8 @@ export function SiteFooter() {
               ["/bien-etre", "Bien-être"],
               ["/planning", "Planning"],
               ["/tarifs", "Tarifs"],
+              ["/boutique", "Boutique"],
+              ["/galerie", "Galerie"],
               ["/reservation", "Réserver"],
               ["/contact", "Contact"],
             ].map(([to, label]) => (
@@ -63,11 +71,23 @@ export function SiteFooter() {
           <address className="not-italic text-sm space-y-3 opacity-90">
             <p className="flex items-start gap-2">
               <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-              <span>6 rue de Portland<br />97160 Le Moule<br />Guadeloupe</span>
+              <span>
+                6 rue de Portland
+                <br />
+                97160 Le Moule
+                <br />
+                Guadeloupe
+              </span>
             </p>
             <p className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
               <a href="tel:+590690979545">+590 690 97 95 45</a>
+            </p>
+            <p className="flex items-center gap-2">
+              <Mail className="h-4 w-4" />
+              <a href="mailto:cocosocialclub1@gmail.com" className="break-all">
+                cocosocialclub1@gmail.com
+              </a>
             </p>
             <p className="text-xs opacity-70 pl-6">Cryolipolyse&nbsp;: 06 90 970 646</p>
             <p className="text-xs opacity-70 pl-6">Pole Dance&nbsp;: 06 99 66 73 25</p>
