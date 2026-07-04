@@ -9,8 +9,74 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TarifsRouteImport } from './routes/tarifs'
+import { Route as SportRouteImport } from './routes/sport'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SeanceDecouverteEmsRouteImport } from './routes/seance-decouverte-ems'
+import { Route as ReservationRouteImport } from './routes/reservation'
+import { Route as PlanningRouteImport } from './routes/planning'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
+import { Route as LeClubRouteImport } from './routes/le-club'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
+import { Route as BienEtreRouteImport } from './routes/bien-etre'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TarifsRoute = TarifsRouteImport.update({
+  id: '/tarifs',
+  path: '/tarifs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SportRoute = SportRouteImport.update({
+  id: '/sport',
+  path: '/sport',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeanceDecouverteEmsRoute = SeanceDecouverteEmsRouteImport.update({
+  id: '/seance-decouverte-ems',
+  path: '/seance-decouverte-ems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservationRoute = ReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanningRoute = PlanningRouteImport.update({
+  id: '/planning',
+  path: '/planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeClubRoute = LeClubRouteImport.update({
+  id: '/le-club',
+  path: '/le-club',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
+  id: '/confidentialite',
+  path: '/confidentialite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BienEtreRoute = BienEtreRouteImport.update({
+  id: '/bien-etre',
+  path: '/bien-etre',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +85,186 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bien-etre': typeof BienEtreRoute
+  '/confidentialite': typeof ConfidentialiteRoute
+  '/contact': typeof ContactRoute
+  '/le-club': typeof LeClubRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/planning': typeof PlanningRoute
+  '/reservation': typeof ReservationRoute
+  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sport': typeof SportRoute
+  '/tarifs': typeof TarifsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bien-etre': typeof BienEtreRoute
+  '/confidentialite': typeof ConfidentialiteRoute
+  '/contact': typeof ContactRoute
+  '/le-club': typeof LeClubRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/planning': typeof PlanningRoute
+  '/reservation': typeof ReservationRoute
+  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sport': typeof SportRoute
+  '/tarifs': typeof TarifsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bien-etre': typeof BienEtreRoute
+  '/confidentialite': typeof ConfidentialiteRoute
+  '/contact': typeof ContactRoute
+  '/le-club': typeof LeClubRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
+  '/planning': typeof PlanningRoute
+  '/reservation': typeof ReservationRoute
+  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sport': typeof SportRoute
+  '/tarifs': typeof TarifsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bien-etre'
+    | '/confidentialite'
+    | '/contact'
+    | '/le-club'
+    | '/mentions-legales'
+    | '/planning'
+    | '/reservation'
+    | '/seance-decouverte-ems'
+    | '/sitemap.xml'
+    | '/sport'
+    | '/tarifs'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bien-etre'
+    | '/confidentialite'
+    | '/contact'
+    | '/le-club'
+    | '/mentions-legales'
+    | '/planning'
+    | '/reservation'
+    | '/seance-decouverte-ems'
+    | '/sitemap.xml'
+    | '/sport'
+    | '/tarifs'
+  id:
+    | '__root__'
+    | '/'
+    | '/bien-etre'
+    | '/confidentialite'
+    | '/contact'
+    | '/le-club'
+    | '/mentions-legales'
+    | '/planning'
+    | '/reservation'
+    | '/seance-decouverte-ems'
+    | '/sitemap.xml'
+    | '/sport'
+    | '/tarifs'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BienEtreRoute: typeof BienEtreRoute
+  ConfidentialiteRoute: typeof ConfidentialiteRoute
+  ContactRoute: typeof ContactRoute
+  LeClubRoute: typeof LeClubRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
+  PlanningRoute: typeof PlanningRoute
+  ReservationRoute: typeof ReservationRoute
+  SeanceDecouverteEmsRoute: typeof SeanceDecouverteEmsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SportRoute: typeof SportRoute
+  TarifsRoute: typeof TarifsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tarifs': {
+      id: '/tarifs'
+      path: '/tarifs'
+      fullPath: '/tarifs'
+      preLoaderRoute: typeof TarifsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sport': {
+      id: '/sport'
+      path: '/sport'
+      fullPath: '/sport'
+      preLoaderRoute: typeof SportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seance-decouverte-ems': {
+      id: '/seance-decouverte-ems'
+      path: '/seance-decouverte-ems'
+      fullPath: '/seance-decouverte-ems'
+      preLoaderRoute: typeof SeanceDecouverteEmsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservation': {
+      id: '/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof ReservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/planning': {
+      id: '/planning'
+      path: '/planning'
+      fullPath: '/planning'
+      preLoaderRoute: typeof PlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/le-club': {
+      id: '/le-club'
+      path: '/le-club'
+      fullPath: '/le-club'
+      preLoaderRoute: typeof LeClubRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentialite': {
+      id: '/confidentialite'
+      path: '/confidentialite'
+      fullPath: '/confidentialite'
+      preLoaderRoute: typeof ConfidentialiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bien-etre': {
+      id: '/bien-etre'
+      path: '/bien-etre'
+      fullPath: '/bien-etre'
+      preLoaderRoute: typeof BienEtreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +277,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BienEtreRoute: BienEtreRoute,
+  ConfidentialiteRoute: ConfidentialiteRoute,
+  ContactRoute: ContactRoute,
+  LeClubRoute: LeClubRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
+  PlanningRoute: PlanningRoute,
+  ReservationRoute: ReservationRoute,
+  SeanceDecouverteEmsRoute: SeanceDecouverteEmsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SportRoute: SportRoute,
+  TarifsRoute: TarifsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
