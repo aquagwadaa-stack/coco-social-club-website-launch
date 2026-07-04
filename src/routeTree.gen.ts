@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TarifsRouteImport } from './routes/tarifs'
 import { Route as SportRouteImport } from './routes/sport'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SeanceDecouverteEmsRouteImport } from './routes/seance-decouverte-ems'
 import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as PlanningRouteImport } from './routes/planning'
@@ -29,6 +30,11 @@ const TarifsRoute = TarifsRouteImport.update({
 const SportRoute = SportRouteImport.update({
   id: '/sport',
   path: '/sport',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SeanceDecouverteEmsRoute = SeanceDecouverteEmsRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/planning': typeof PlanningRoute
   '/reservation': typeof ReservationRoute
   '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
 }
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/planning': typeof PlanningRoute
   '/reservation': typeof ReservationRoute
   '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
 }
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/planning': typeof PlanningRoute
   '/reservation': typeof ReservationRoute
   '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
 }
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/planning'
     | '/reservation'
     | '/seance-decouverte-ems'
+    | '/sitemap.xml'
     | '/sport'
     | '/tarifs'
   fileRoutesByTo: FileRoutesByTo
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/planning'
     | '/reservation'
     | '/seance-decouverte-ems'
+    | '/sitemap.xml'
     | '/sport'
     | '/tarifs'
   id:
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/planning'
     | '/reservation'
     | '/seance-decouverte-ems'
+    | '/sitemap.xml'
     | '/sport'
     | '/tarifs'
   fileRoutesById: FileRoutesById
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   PlanningRoute: typeof PlanningRoute
   ReservationRoute: typeof ReservationRoute
   SeanceDecouverteEmsRoute: typeof SeanceDecouverteEmsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportRoute: typeof SportRoute
   TarifsRoute: typeof TarifsRoute
 }
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/sport'
       fullPath: '/sport'
       preLoaderRoute: typeof SportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/seance-decouverte-ems': {
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   PlanningRoute: PlanningRoute,
   ReservationRoute: ReservationRoute,
   SeanceDecouverteEmsRoute: SeanceDecouverteEmsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportRoute: SportRoute,
   TarifsRoute: TarifsRoute,
 }
