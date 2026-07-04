@@ -11,9 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TarifsRouteImport } from './routes/tarifs'
 import { Route as SportRouteImport } from './routes/sport'
+import { Route as SeanceDecouverteEmsRouteImport } from './routes/seance-decouverte-ems'
+import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as PlanningRouteImport } from './routes/planning'
+import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LeClubRouteImport } from './routes/le-club'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as BienEtreRouteImport } from './routes/bien-etre'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -27,9 +31,24 @@ const SportRoute = SportRouteImport.update({
   path: '/sport',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SeanceDecouverteEmsRoute = SeanceDecouverteEmsRouteImport.update({
+  id: '/seance-decouverte-ems',
+  path: '/seance-decouverte-ems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReservationRoute = ReservationRouteImport.update({
+  id: '/reservation',
+  path: '/reservation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PlanningRoute = PlanningRouteImport.update({
   id: '/planning',
   path: '/planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MentionsLegalesRoute = MentionsLegalesRouteImport.update({
+  id: '/mentions-legales',
+  path: '/mentions-legales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeClubRoute = LeClubRouteImport.update({
@@ -40,6 +59,11 @@ const LeClubRoute = LeClubRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
+  id: '/confidentialite',
+  path: '/confidentialite',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BienEtreRoute = BienEtreRouteImport.update({
@@ -56,18 +80,26 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bien-etre': typeof BienEtreRoute
+  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/le-club': typeof LeClubRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
+  '/reservation': typeof ReservationRoute
+  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
   '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bien-etre': typeof BienEtreRoute
+  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/le-club': typeof LeClubRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
+  '/reservation': typeof ReservationRoute
+  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
   '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
 }
@@ -75,9 +107,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/bien-etre': typeof BienEtreRoute
+  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/le-club': typeof LeClubRoute
+  '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
+  '/reservation': typeof ReservationRoute
+  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
   '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
 }
@@ -86,27 +122,39 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/bien-etre'
+    | '/confidentialite'
     | '/contact'
     | '/le-club'
+    | '/mentions-legales'
     | '/planning'
+    | '/reservation'
+    | '/seance-decouverte-ems'
     | '/sport'
     | '/tarifs'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/bien-etre'
+    | '/confidentialite'
     | '/contact'
     | '/le-club'
+    | '/mentions-legales'
     | '/planning'
+    | '/reservation'
+    | '/seance-decouverte-ems'
     | '/sport'
     | '/tarifs'
   id:
     | '__root__'
     | '/'
     | '/bien-etre'
+    | '/confidentialite'
     | '/contact'
     | '/le-club'
+    | '/mentions-legales'
     | '/planning'
+    | '/reservation'
+    | '/seance-decouverte-ems'
     | '/sport'
     | '/tarifs'
   fileRoutesById: FileRoutesById
@@ -114,9 +162,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BienEtreRoute: typeof BienEtreRoute
+  ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
   LeClubRoute: typeof LeClubRoute
+  MentionsLegalesRoute: typeof MentionsLegalesRoute
   PlanningRoute: typeof PlanningRoute
+  ReservationRoute: typeof ReservationRoute
+  SeanceDecouverteEmsRoute: typeof SeanceDecouverteEmsRoute
   SportRoute: typeof SportRoute
   TarifsRoute: typeof TarifsRoute
 }
@@ -137,11 +189,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/seance-decouverte-ems': {
+      id: '/seance-decouverte-ems'
+      path: '/seance-decouverte-ems'
+      fullPath: '/seance-decouverte-ems'
+      preLoaderRoute: typeof SeanceDecouverteEmsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reservation': {
+      id: '/reservation'
+      path: '/reservation'
+      fullPath: '/reservation'
+      preLoaderRoute: typeof ReservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/planning': {
       id: '/planning'
       path: '/planning'
       fullPath: '/planning'
       preLoaderRoute: typeof PlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mentions-legales': {
+      id: '/mentions-legales'
+      path: '/mentions-legales'
+      fullPath: '/mentions-legales'
+      preLoaderRoute: typeof MentionsLegalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/le-club': {
@@ -156,6 +229,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentialite': {
+      id: '/confidentialite'
+      path: '/confidentialite'
+      fullPath: '/confidentialite'
+      preLoaderRoute: typeof ConfidentialiteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/bien-etre': {
@@ -178,9 +258,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BienEtreRoute: BienEtreRoute,
+  ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
   LeClubRoute: LeClubRoute,
+  MentionsLegalesRoute: MentionsLegalesRoute,
   PlanningRoute: PlanningRoute,
+  ReservationRoute: ReservationRoute,
+  SeanceDecouverteEmsRoute: SeanceDecouverteEmsRoute,
   SportRoute: SportRoute,
   TarifsRoute: TarifsRoute,
 }
