@@ -70,7 +70,7 @@ function Reservation() {
         ))}
       </section>
 
-      <section className="container-editorial pb-24">
+      <section className="mx-auto max-w-[118rem] px-4 pb-24 sm:px-6 lg:px-8">
         <XplorEmbed
           src={XPLOR_RESERVATION_URL}
           title="Réservation en ligne"
