@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Dumbbell, Leaf, ShoppingBag } from "lucide-react";
 import { PageHero, SiteLayout } from "@/components/site/layout";
+import { XPLOR_SHOP_URL, XplorEmbed } from "@/components/site/xplor-embed";
 
 const products = [
   {
@@ -84,6 +85,16 @@ function Boutique() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="container-editorial pb-24">
+        <XplorEmbed
+          src={XPLOR_SHOP_URL}
+          title="Boutique en ligne Coco"
+          eyebrow="Offres officielles Xplor"
+          description="Retrouve les abonnements, cartes prépayées, séances découverte, offres EMS, coaching, cours collectifs et soins configurés dans l’espace membre Coco Social Club."
+          ctaLabel="Ouvrir la boutique"
+        />
       </section>
 
       <section className="bg-cream py-20 text-center">
