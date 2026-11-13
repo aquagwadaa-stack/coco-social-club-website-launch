@@ -10,43 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TarifsRouteImport } from './routes/tarifs'
-import { Route as SportRouteImport } from './routes/sport'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SeanceDecouverteEmsRouteImport } from './routes/seance-decouverte-ems'
-import { Route as ReservationRouteImport } from './routes/reservation'
 import { Route as PlanningRouteImport } from './routes/planning'
 import { Route as MentionsLegalesRouteImport } from './routes/mentions-legales'
 import { Route as LeClubRouteImport } from './routes/le-club'
 import { Route as GalerieRouteImport } from './routes/galerie'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as ConfidentialiteRouteImport } from './routes/confidentialite'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
-import { Route as BienEtreRouteImport } from './routes/bien-etre'
+import { Route as ActivitesRouteImport } from './routes/activites'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ActualitesIndexRouteImport } from './routes/actualites.index'
+import { Route as ActualitesSlugRouteImport } from './routes/actualites.$slug'
 
 const TarifsRoute = TarifsRouteImport.update({
   id: '/tarifs',
   path: '/tarifs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SportRoute = SportRouteImport.update({
-  id: '/sport',
-  path: '/sport',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SeanceDecouverteEmsRoute = SeanceDecouverteEmsRouteImport.update({
-  id: '/seance-decouverte-ems',
-  path: '/seance-decouverte-ems',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReservationRoute = ReservationRouteImport.update({
-  id: '/reservation',
-  path: '/reservation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlanningRoute = PlanningRouteImport.update({
@@ -74,19 +51,14 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ConfidentialiteRoute = ConfidentialiteRouteImport.update({
-  id: '/confidentialite',
-  path: '/confidentialite',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BoutiqueRoute = BoutiqueRouteImport.update({
   id: '/boutique',
   path: '/boutique',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BienEtreRoute = BienEtreRouteImport.update({
-  id: '/bien-etre',
-  path: '/bien-etre',
+const ActivitesRoute = ActivitesRouteImport.update({
+  id: '/activites',
+  path: '/activites',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -94,122 +66,111 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ActualitesIndexRoute = ActualitesIndexRouteImport.update({
+  id: '/actualites/',
+  path: '/actualites/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ActualitesSlugRoute = ActualitesSlugRouteImport.update({
+  id: '/actualites/$slug',
+  path: '/actualites/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/bien-etre': typeof BienEtreRoute
+  '/activites': typeof ActivitesRoute
   '/boutique': typeof BoutiqueRoute
-  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/galerie': typeof GalerieRoute
   '/le-club': typeof LeClubRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
-  '/reservation': typeof ReservationRoute
-  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
+  '/actualites/': typeof ActualitesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/bien-etre': typeof BienEtreRoute
+  '/activites': typeof ActivitesRoute
   '/boutique': typeof BoutiqueRoute
-  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/galerie': typeof GalerieRoute
   '/le-club': typeof LeClubRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
-  '/reservation': typeof ReservationRoute
-  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
+  '/actualites': typeof ActualitesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/bien-etre': typeof BienEtreRoute
+  '/activites': typeof ActivitesRoute
   '/boutique': typeof BoutiqueRoute
-  '/confidentialite': typeof ConfidentialiteRoute
   '/contact': typeof ContactRoute
   '/galerie': typeof GalerieRoute
   '/le-club': typeof LeClubRoute
   '/mentions-legales': typeof MentionsLegalesRoute
   '/planning': typeof PlanningRoute
-  '/reservation': typeof ReservationRoute
-  '/seance-decouverte-ems': typeof SeanceDecouverteEmsRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/sport': typeof SportRoute
   '/tarifs': typeof TarifsRoute
+  '/actualites/$slug': typeof ActualitesSlugRoute
+  '/actualites/': typeof ActualitesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/bien-etre'
+    | '/activites'
     | '/boutique'
-    | '/confidentialite'
     | '/contact'
     | '/galerie'
     | '/le-club'
     | '/mentions-legales'
     | '/planning'
-    | '/reservation'
-    | '/seance-decouverte-ems'
-    | '/sitemap.xml'
-    | '/sport'
     | '/tarifs'
+    | '/actualites/$slug'
+    | '/actualites/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/bien-etre'
+    | '/activites'
     | '/boutique'
-    | '/confidentialite'
     | '/contact'
     | '/galerie'
     | '/le-club'
     | '/mentions-legales'
     | '/planning'
-    | '/reservation'
-    | '/seance-decouverte-ems'
-    | '/sitemap.xml'
-    | '/sport'
     | '/tarifs'
+    | '/actualites/$slug'
+    | '/actualites'
   id:
     | '__root__'
     | '/'
-    | '/bien-etre'
+    | '/activites'
     | '/boutique'
-    | '/confidentialite'
     | '/contact'
     | '/galerie'
     | '/le-club'
     | '/mentions-legales'
     | '/planning'
-    | '/reservation'
-    | '/seance-decouverte-ems'
-    | '/sitemap.xml'
-    | '/sport'
     | '/tarifs'
+    | '/actualites/$slug'
+    | '/actualites/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BienEtreRoute: typeof BienEtreRoute
+  ActivitesRoute: typeof ActivitesRoute
   BoutiqueRoute: typeof BoutiqueRoute
-  ConfidentialiteRoute: typeof ConfidentialiteRoute
   ContactRoute: typeof ContactRoute
   GalerieRoute: typeof GalerieRoute
   LeClubRoute: typeof LeClubRoute
   MentionsLegalesRoute: typeof MentionsLegalesRoute
   PlanningRoute: typeof PlanningRoute
-  ReservationRoute: typeof ReservationRoute
-  SeanceDecouverteEmsRoute: typeof SeanceDecouverteEmsRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  SportRoute: typeof SportRoute
   TarifsRoute: typeof TarifsRoute
+  ActualitesSlugRoute: typeof ActualitesSlugRoute
+  ActualitesIndexRoute: typeof ActualitesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -219,34 +180,6 @@ declare module '@tanstack/react-router' {
       path: '/tarifs'
       fullPath: '/tarifs'
       preLoaderRoute: typeof TarifsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sport': {
-      id: '/sport'
-      path: '/sport'
-      fullPath: '/sport'
-      preLoaderRoute: typeof SportRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/seance-decouverte-ems': {
-      id: '/seance-decouverte-ems'
-      path: '/seance-decouverte-ems'
-      fullPath: '/seance-decouverte-ems'
-      preLoaderRoute: typeof SeanceDecouverteEmsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reservation': {
-      id: '/reservation'
-      path: '/reservation'
-      fullPath: '/reservation'
-      preLoaderRoute: typeof ReservationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/planning': {
@@ -284,13 +217,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/confidentialite': {
-      id: '/confidentialite'
-      path: '/confidentialite'
-      fullPath: '/confidentialite'
-      preLoaderRoute: typeof ConfidentialiteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/boutique': {
       id: '/boutique'
       path: '/boutique'
@@ -298,11 +224,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BoutiqueRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/bien-etre': {
-      id: '/bien-etre'
-      path: '/bien-etre'
-      fullPath: '/bien-etre'
-      preLoaderRoute: typeof BienEtreRouteImport
+    '/activites': {
+      id: '/activites'
+      path: '/activites'
+      fullPath: '/activites'
+      preLoaderRoute: typeof ActivitesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -312,24 +238,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/actualites/': {
+      id: '/actualites/'
+      path: '/actualites'
+      fullPath: '/actualites/'
+      preLoaderRoute: typeof ActualitesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/actualites/$slug': {
+      id: '/actualites/$slug'
+      path: '/actualites/$slug'
+      fullPath: '/actualites/$slug'
+      preLoaderRoute: typeof ActualitesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BienEtreRoute: BienEtreRoute,
+  ActivitesRoute: ActivitesRoute,
   BoutiqueRoute: BoutiqueRoute,
-  ConfidentialiteRoute: ConfidentialiteRoute,
   ContactRoute: ContactRoute,
   GalerieRoute: GalerieRoute,
   LeClubRoute: LeClubRoute,
   MentionsLegalesRoute: MentionsLegalesRoute,
   PlanningRoute: PlanningRoute,
-  ReservationRoute: ReservationRoute,
-  SeanceDecouverteEmsRoute: SeanceDecouverteEmsRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
-  SportRoute: SportRoute,
   TarifsRoute: TarifsRoute,
+  ActualitesSlugRoute: ActualitesSlugRoute,
+  ActualitesIndexRoute: ActualitesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,390 +1,562 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Flame, ShoppingBag, Snowflake, Sparkles, Waves } from "lucide-react";
+import {
+  ArrowRight,
+  Gem,
+  HandHeart,
+  Instagram,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Phone,
+  Smile,
+  TrendingUp,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+import { content } from "@/content";
+import { ArrowLink, ButtonLink, DeciplusButton, ExternalButton } from "@/components/site/cta";
+import { Emphasis } from "@/components/site/emphasis";
+import { Adresse, Horaires, NoteGoogle } from "@/components/site/infos";
 import { SiteLayout } from "@/components/site/layout";
-import heroImg from "@/assets/hero-rooftop.jpg";
-import emsImg from "@/assets/ems-training.jpg";
-import wellnessImg from "@/assets/wellness-room.jpg";
-import aerialImg from "@/assets/aerial-yoga.jpg";
-import rooftopImg from "@/assets/rooftop-view.jpg";
-import communityImg from "@/assets/community.jpg";
-import tanImg from "@/assets/tan.jpg";
-import massageImg from "@/assets/massage.jpg";
+import { Logo } from "@/components/site/logo";
+import { Reveal } from "@/components/site/reveal";
+import { SectionHeading } from "@/components/site/section";
+import { Visual } from "@/components/site/visual";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: content.accueil.meta.titre },
+      { name: "description", content: content.accueil.meta.description },
+      { property: "og:title", content: content.accueil.meta.titre },
+      { property: "og:description", content: content.accueil.meta.description },
+    ],
+  }),
+  component: AccueilPage,
 });
 
-function Index() {
+/** Pictogrammes des cinq avantages, dans l'ordre de src/content.ts. */
+const AVANTAGE_ICONS: LucideIcon[] = [Smile, HandHeart, Users, TrendingUp, Gem];
+
+function AccueilPage() {
   return (
-    <SiteLayout transparentNav>
-      {/* HERO */}
-      <section className="relative min-h-[100svh] flex items-end overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Rooftop de Coco Social Club au Moule avec vue mer"
-          className="absolute inset-0 h-full w-full object-cover"
-          width={1920}
-          height={1280}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--brown-deep)]/30 via-transparent to-[color:var(--brown-deep)]/70" />
-        <div className="relative container-editorial pb-20 pt-32 md:pb-28 text-[color:var(--cream-warm)]">
-          <p className="text-xs uppercase tracking-[0.4em] opacity-90 fade-up">
-            Le Moule — Guadeloupe
-          </p>
-          <h1 className="mt-6 font-serif text-6xl md:text-8xl lg:text-9xl leading-[0.95] fade-up">
-            Coco
-            <br />
-            <span className="italic opacity-90">Social Club</span>
-          </h1>
-          <p className="mt-8 font-serif italic text-2xl md:text-3xl max-w-2xl fade-up">
-            Là où le sport rencontre le bien-être.
-          </p>
-          <p className="mt-4 max-w-xl text-base md:text-lg opacity-90 fade-up">
-            Un lieu unique au Moule pour bouger, se renforcer, se détendre et prendre soin de soi
-            dans une ambiance chaleureuse.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3 fade-up">
-            <Link
-              to="/reservation"
-              className="btn-pill bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)] hover:scale-[1.02]"
-            >
-              Réserver une séance <ArrowUpRight className="h-4 w-4" />
-            </Link>
-            <Link
-              to="/le-club"
-              className="btn-pill border border-[color:var(--cream-warm)]/60 text-[color:var(--cream-warm)] hover:bg-[color:var(--cream-warm)]/10"
-            >
-              Découvrir le Club
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* MARQUEE */}
-      <section className="border-y border-border bg-cream overflow-hidden py-5">
-        <div className="flex whitespace-nowrap marquee gap-14 font-serif italic text-2xl text-foreground/70">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <div key={i} className="flex gap-14 shrink-0">
-              <span>Bouger</span>
-              <span>·</span>
-              <span>Respirer</span>
-              <span>·</span>
-              <span>Partager</span>
-              <span>·</span>
-              <span>Se renforcer</span>
-              <span>·</span>
-              <span>Se détendre</span>
-              <span>·</span>
-              <span>Prendre soin de soi</span>
-              <span>·</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* EXPERIENCE */}
-      <section className="container-editorial py-24 md:py-32">
-        <div className="grid lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-5 lg:sticky lg:top-28">
-            <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
-              01 — L'expérience Coco
-            </p>
-            <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
-              Ici, nous avons imaginé <em className="italic text-taupe">une aventure.</em>
-            </h2>
-            <p className="mt-6 text-lg text-muted-foreground max-w-md">
-              Un lieu pour celles et ceux qui veulent se sentir bien. Un espace chaleureux,
-              confortable et inspirant. Un endroit où l'on aime venir.
-            </p>
-          </div>
-          <div className="lg:col-span-7 grid grid-cols-2 gap-4 md:gap-6">
-            <img
-              src={rooftopImg}
-              alt="Rooftop tropical"
-              className="rounded-[2rem] aspect-[4/5] object-cover w-full mt-10"
-              loading="lazy"
-            />
-            <img
-              src={communityImg}
-              alt="Communauté"
-              className="rounded-[2rem] aspect-[4/5] object-cover w-full"
-              loading="lazy"
-            />
-            <img
-              src={aerialImg}
-              alt="Yoga aérien"
-              className="rounded-[2rem] aspect-[4/5] object-cover w-full col-span-2"
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* TWO UNIVERSES */}
-      <section className="container-editorial pb-24 md:pb-32">
-        <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
-          02 — Deux univers complémentaires
-        </p>
-        <div className="grid md:grid-cols-2 gap-6">
-          <UniverseCard
-            to="/sport"
-            image={emsImg}
-            eyebrow="Sport"
-            title="Bouger, se renforcer."
-            copy="Électrostimulation, coaching personnalisé et cours collectifs sur le rooftop."
-          />
-          <UniverseCard
-            to="/bien-etre"
-            image={wellnessImg}
-            eyebrow="Bien-être"
-            title="Respirer, se détendre."
-            copy="Cryolipolyse, pressothérapie, tan bronzage et massages."
-          />
-        </div>
-      </section>
-
-      {/* EMS FEATURED */}
-      <section className="bg-[color:var(--brown-deep)] text-[color:var(--cream-warm)] py-24 md:py-32">
-        <div className="container-editorial grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
-            <img
-              src={emsImg}
-              alt="Séance EMS coachée"
-              className="rounded-[2rem] object-cover w-full aspect-[4/5]"
-              loading="lazy"
-            />
-          </div>
-          <div className="lg:col-span-6">
-            <p className="text-xs uppercase tracking-[0.28em] opacity-70 mb-6">
-              Électrostimulation EMS
-            </p>
-            <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
-              20 minutes pour des <em className="italic">résultats visibles.</em>
-            </h2>
-            <ul className="mt-8 space-y-4 text-base opacity-90">
-              {[
-                "Séance rapide de 20 minutes",
-                "Renforcement musculaire ciblé",
-                "Accompagnement par un coach dédié",
-                "Séance personnalisée selon tes objectifs",
-                "Méthode adaptée aux emplois du temps chargés",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2 h-1 w-6 bg-[color:var(--beige)]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-8 rounded-[1.5rem] border border-[color:var(--cream-warm)]/20 p-6 bg-[color:var(--cream-warm)]/5">
-              <p className="font-serif italic text-2xl">
-                « 20 minutes = jusqu'à 4 heures de sport traditionnel. »
-              </p>
-            </div>
-            <Link
-              to="/seance-decouverte-ems"
-              className="btn-pill mt-8 bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)]"
-            >
-              Réserver ma séance découverte gratuite <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ROOFTOP CLASSES */}
-      <section className="container-editorial py-24 md:py-32">
-        <div className="max-w-3xl">
-          <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
-            Cours collectifs · Rooftop
-          </p>
-          <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
-            Bouger, respirer, <em className="italic">partager.</em>
-          </h2>
-          <p className="mt-6 text-lg text-muted-foreground">
-            Une expérience sportive conviviale sur un rooftop avec vue mer. Retrouve la communauté
-            Coco autour de cours accessibles à tous les niveaux.
-          </p>
-        </div>
-        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {[
-            "Renfo Full Body",
-            "Yoga",
-            "Yoga aérien",
-            "Pilates",
-            "Fatburner",
-            "Abdos Choco Fessiers Coco",
-            "Pole Dance",
-          ].map((c) => (
-            <div
-              key={c}
-              className="rounded-full border border-border bg-cream px-5 py-4 text-center text-sm"
-            >
-              {c}
-            </div>
-          ))}
-        </div>
-        <Link to="/planning" className="btn-pill mt-10 bg-primary text-primary-foreground">
-          Voir le planning <ArrowUpRight className="h-4 w-4" />
-        </Link>
-      </section>
-
-      {/* WELLNESS CARDS */}
-      <section className="bg-cream py-24 md:py-32">
-        <div className="container-editorial">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-            <div className="max-w-2xl">
-              <p className="text-xs uppercase tracking-[0.28em] text-muted-foreground mb-6">
-                Soins bien-être
-              </p>
-              <h2 className="font-serif text-5xl md:text-6xl leading-[1.02]">
-                Prendre soin de soi <em className="italic">peut être simple.</em>
-              </h2>
-            </div>
-            <Link
-              to="/bien-etre"
-              className="btn-pill border border-border text-foreground hover:bg-background"
-            >
-              Voir tous les soins <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <WellnessCard
-              image={tanImg}
-              icon={<Sparkles className="h-4 w-4" />}
-              title="Tan Bronzage"
-              copy="Un bronzage uniforme, naturel et sans UV."
-            />
-            <WellnessCard
-              image={wellnessImg}
-              icon={<Snowflake className="h-4 w-4" />}
-              title="Cryolipolyse"
-              copy="Une technologie non invasive qui cible les zones localisées par le froid."
-            />
-            <WellnessCard
-              image={rooftopImg}
-              icon={<Waves className="h-4 w-4" />}
-              title="Pressothérapie"
-              copy="Une méthode favorisant le drainage et la sensation de jambes légères."
-            />
-            <WellnessCard
-              image={massageImg}
-              icon={<Flame className="h-4 w-4" />}
-              title="Massages & Soins"
-              copy="Détente, récupération et lâcher-prise dans un cocon chaleureux."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* BOUTIQUE */}
-      <section className="container-editorial py-24 md:py-32">
-        <div className="grid items-stretch overflow-hidden rounded-[2rem] bg-[color:var(--brown-deep)] text-[color:var(--cream-warm)] lg:grid-cols-2">
-          <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16">
-            <ShoppingBag className="h-7 w-7 opacity-70" />
-            <p className="mt-8 text-xs uppercase tracking-[0.28em] opacity-65">La boutique</p>
-            <h2 className="mt-4 font-serif text-5xl leading-[1.02] md:text-6xl">
-              Les essentiels <em className="italic">Coco.</em>
-            </h2>
-            <p className="mt-5 max-w-lg leading-7 opacity-75">
-              Découvre notre sélection Nutripure, les serviettes brodées et les accessoires qui
-              accompagnent tes séances.
-            </p>
-            <Link
-              to="/boutique"
-              className="btn-pill mt-8 self-start bg-[color:var(--cream-warm)] text-[color:var(--brown-deep)]"
-            >
-              Découvrir la boutique <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="grid min-h-[30rem] grid-cols-2 bg-cream p-5 md:p-8">
-            <div className="m-2 flex flex-col justify-end rounded-[1.5rem] bg-[color:var(--beige)] p-6 text-[color:var(--brown-deep)]">
-              <p className="text-xs uppercase tracking-[0.24em] opacity-60">Nutrition</p>
-              <p className="mt-2 font-serif text-3xl">Nutripure</p>
-            </div>
-            <div className="m-2 mt-14 flex flex-col justify-end rounded-[1.5rem] bg-background p-6 text-[color:var(--brown-deep)]">
-              <p className="text-xs uppercase tracking-[0.24em] opacity-60">Collection</p>
-              <p className="mt-2 font-serif text-3xl">Serviettes brodées</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="container-editorial py-24 md:py-36 text-center">
-        <p className="font-serif italic text-taupe text-lg">Vivez l'expérience Coco Social Club.</p>
-        <h2 className="mt-4 font-serif text-5xl md:text-7xl leading-[1.02] max-w-4xl mx-auto">
-          Prendre soin de soi <em className="italic">peut être simple.</em>
-        </h2>
-        <p className="mt-6 max-w-xl mx-auto text-lg text-muted-foreground">
-          Choisis ton expérience, réserve ton créneau et rejoins la communauté Coco Social Club.
-        </p>
-        <Link
-          to="/reservation"
-          className="btn-pill mt-10 bg-primary text-primary-foreground text-base px-8 py-4"
-        >
-          Je réserve ma séance <ArrowUpRight className="h-4 w-4" />
-        </Link>
-      </section>
+    <SiteLayout overlayHeader>
+      <Hero />
+      <BandeBio />
+      <Presentation />
+      <Avantages />
+      <ActivitesPhares />
+      <Decouverte />
+      <Formules />
+      <ReseauxEtAvis />
+      <Pratique />
     </SiteLayout>
   );
 }
 
-function UniverseCard({
-  to,
-  image,
-  eyebrow,
-  title,
-  copy,
-}: {
-  to: string;
-  image: string;
-  eyebrow: string;
-  title: string;
-  copy: string;
-}) {
+/* -------------------------------------------------------------------------- */
+/* Grand visuel d'ouverture                                                   */
+/* -------------------------------------------------------------------------- */
+
+function Hero() {
+  const { hero } = content.accueil;
+  const { actions } = content;
+  const hasPhoto = Boolean(hero.photo.src);
+
   return (
-    <Link to={to} className="group relative block overflow-hidden rounded-[2rem] aspect-[4/5]">
-      <img
-        src={image}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-      <div className="relative h-full flex flex-col justify-end p-8 text-[color:var(--cream-warm)]">
-        <p className="text-xs uppercase tracking-[0.3em] opacity-90">{eyebrow}</p>
-        <h3 className="mt-3 font-serif text-4xl md:text-5xl leading-tight">{title}</h3>
-        <p className="mt-3 opacity-90 max-w-sm">{copy}</p>
-        <span className="mt-6 inline-flex items-center gap-2 text-sm">
-          Explorer <ArrowUpRight className="h-4 w-4 group-hover:translate-x-1 transition" />
-        </span>
+    <section className="csc-dark relative isolate overflow-hidden">
+      {hasPhoto ? (
+        <>
+          <img
+            src={hero.photo.src ?? undefined}
+            alt={hero.photo.alt}
+            className="absolute inset-0 -z-20 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-espresso/85 via-espresso/55 to-espresso/20" />
+        </>
+      ) : (
+        <svg
+          viewBox="0 0 800 800"
+          className="absolute -right-[22rem] top-1/2 -z-10 size-[64rem] -translate-y-1/2 text-creme/12 max-lg:-right-[34rem] max-lg:opacity-70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <g className="csc-ring-drift">
+            <circle cx="400" cy="400" r="398" strokeDasharray="2 10" />
+          </g>
+          <circle cx="400" cy="400" r="330" />
+          <circle cx="400" cy="400" r="262" />
+        </svg>
+      )}
+
+      <div
+        className={
+          hasPhoto
+            ? "csc-container flex min-h-[min(44rem,84svh)] items-end pb-14 pt-28 lg:pb-16 lg:pt-32"
+            : "csc-container grid min-h-[min(44rem,84svh)] items-center gap-x-12 gap-y-10 pb-14 pt-28 lg:grid-cols-[1.12fr_0.88fr] lg:pb-16 lg:pt-32"
+        }
+      >
+        <div className="csc-fade-up max-w-[43rem]">
+          <p className="csc-eyebrow text-sable-clair">{hero.surtitre}</p>
+          <h1 className="mt-5 text-[2.75rem] sm:text-6xl lg:text-[4.5rem]">
+            <Emphasis text={hero.titre} />
+          </h1>
+          <p className="mt-6 max-w-xl text-[1.16rem] leading-relaxed text-creme/90">{hero.texte}</p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <DeciplusButton action="reservation" tone="creme" size="lg" />
+            <ButtonLink to="/le-club" tone="outlineLight">
+              {actions.decouvrirClub}
+            </ButtonLink>
+            <ButtonLink to="/contact" tone="outlineLight">
+              {actions.contact}
+            </ButtonLink>
+          </div>
+          <NoteGoogle light className="mt-8" />
+        </div>
+
+        {!hasPhoto && (
+          <div className="relative mx-auto w-full max-w-[16rem] sm:max-w-[19rem] lg:max-w-[23rem]">
+            <Visual
+              photo={{ ...hero.photo, tone: "sable" }}
+              className="csc-arch aspect-[4/5] w-full"
+              variant={2}
+              iconSize="lg"
+              priority
+            />
+            <Logo className="absolute -bottom-5 -left-6 size-28 drop-shadow-[0_10px_24px_rgba(46,34,28,0.35)] sm:-left-10 sm:size-32" />
+          </div>
+        )}
       </div>
-    </Link>
+    </section>
   );
 }
 
-function WellnessCard({
-  image,
-  icon,
-  title,
-  copy,
-}: {
-  image: string;
-  icon: React.ReactNode;
-  title: string;
-  copy: string;
-}) {
+/* -------------------------------------------------------------------------- */
+/* Les mots du club (bio Instagram)                                           */
+/* -------------------------------------------------------------------------- */
+
+function BandeBio() {
+  const { bioInstagram, coordonnees, site } = content;
+  const [premiere, ...autres] = bioInstagram.phrases;
+
   return (
-    <article className="bg-background rounded-[1.5rem] overflow-hidden border border-border/60">
-      <img src={image} alt="" className="aspect-[4/5] w-full object-cover" loading="lazy" />
-      <div className="p-6">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          {icon}
-          <span className="text-xs uppercase tracking-[0.24em]">Soin</span>
+    <section aria-label={bioInstagram.source} className="border-b border-ligne bg-creme">
+      <div className="csc-container grid gap-x-10 gap-y-6 py-9 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-10">
+        <div>
+          <a
+            href={coordonnees.instagram.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="csc-eyebrow inline-flex min-h-[32px] items-center gap-2 text-moka-soft hover:text-moka"
+          >
+            <Instagram aria-hidden="true" className="size-4" />
+            {bioInstagram.source}
+            <span className="sr-only"> ({site.nouvelOnglet})</span>
+          </a>
+          <p className="csc-serif mt-3 text-[1.75rem] leading-[1.15] sm:text-[2.1rem]">
+            « {premiere} »
+          </p>
         </div>
-        <h3 className="mt-3 font-serif text-2xl">{title}</h3>
-        <p className="mt-2 text-sm text-muted-foreground">{copy}</p>
+        <ul className="grid gap-2 sm:grid-cols-3 lg:grid-cols-1 lg:gap-0">
+          {autres.map((phrase) => (
+            <li
+              key={phrase}
+              className="flex items-center gap-3 border-ligne py-2 text-[1.08rem] font-medium lg:border-b lg:py-3 lg:last:border-b-0"
+            >
+              <span aria-hidden="true" className="size-1.5 shrink-0 rounded-full bg-moka" />
+              {phrase}
+            </li>
+          ))}
+        </ul>
       </div>
-    </article>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Présentation courte                                                        */
+/* -------------------------------------------------------------------------- */
+
+function Presentation() {
+  const { presentation } = content.accueil;
+  const { actions } = content;
+
+  return (
+    <section className="csc-section">
+      <div className="csc-container grid items-center gap-x-16 gap-y-10 lg:grid-cols-[0.82fr_1.18fr]">
+        <Reveal className="mx-auto w-full max-w-[17rem] sm:max-w-[21rem] lg:max-w-[25rem]">
+          <Visual
+            photo={presentation.photo}
+            className="csc-arch aspect-[4/5] w-full"
+            variant={1}
+            iconSize="lg"
+          />
+        </Reveal>
+        <Reveal>
+          <SectionHeading surtitre={presentation.surtitre} titre={presentation.titre} />
+          <div className="mt-6 grid max-w-2xl gap-4 text-[1.1rem] leading-relaxed text-moka-soft">
+            {presentation.texte.map((paragraphe) => (
+              <p key={paragraphe}>{paragraphe}</p>
+            ))}
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <ButtonLink to="/le-club" arrow>
+              {actions.decouvrirClub}
+            </ButtonLink>
+            <ArrowLink to="/planning">{actions.voirPlanning}</ArrowLink>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Avantages                                                                  */
+/* -------------------------------------------------------------------------- */
+
+function Avantages() {
+  const { avantages } = content.accueil;
+
+  return (
+    <section className="csc-section border-y border-ligne bg-creme">
+      <div className="csc-container">
+        <Reveal>
+          <SectionHeading surtitre={avantages.surtitre} titre={avantages.titre} />
+        </Reveal>
+        <ul className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
+          {avantages.liste.map((avantage, index) => {
+            const Icon = AVANTAGE_ICONS[index % AVANTAGE_ICONS.length];
+            return (
+              <li key={avantage.titre}>
+                <Reveal delay={index * 70} className="border-t border-moka/25 pt-5">
+                  <Icon aria-hidden="true" className="size-7 text-moka" strokeWidth={1.3} />
+                  <h3 className="mt-4 text-[1.4rem]">{avantage.titre}</h3>
+                  <p className="mt-2 text-[1rem] text-moka-soft">{avantage.texte}</p>
+                </Reveal>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Activités phares                                                           */
+/* -------------------------------------------------------------------------- */
+
+function ActivitesPhares() {
+  const { activites } = content.accueil;
+  const { familles } = content.activites;
+
+  return (
+    <section className="csc-section">
+      <div className="csc-container">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+          <Reveal>
+            <SectionHeading
+              surtitre={activites.surtitre}
+              titre={activites.titre}
+              texte={activites.texte}
+            />
+          </Reveal>
+          <ArrowLink to="/activites">{activites.lien}</ArrowLink>
+        </div>
+
+        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {familles.map((famille, index) => (
+            <li
+              key={famille.id}
+              className={index === 0 ? "sm:col-span-2 lg:col-span-1" : undefined}
+            >
+              <Reveal delay={index * 60} className="h-full">
+                <Link
+                  to="/activites"
+                  hash={famille.id}
+                  className="group flex h-full overflow-hidden rounded-[1.6rem] border border-ligne bg-card transition-shadow duration-300 hover:shadow-[0_18px_40px_-24px_rgba(46,34,28,0.5)] sm:flex-col"
+                >
+                  <div className="w-[34%] shrink-0 overflow-hidden sm:w-full">
+                    <Visual
+                      photo={famille.photo}
+                      className="h-full min-h-[9.5rem] w-full transition-transform duration-700 group-hover:scale-[1.04] sm:aspect-[5/4] sm:h-auto sm:min-h-0 lg:aspect-[4/5]"
+                      variant={(index % 4) as 0 | 1 | 2 | 3}
+                      iconSize="sm"
+                    />
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col p-4 sm:p-5">
+                    <h3 className="text-[1.6rem]">{famille.nom}</h3>
+                    <p className="mt-1 text-[0.95rem] font-semibold text-moka">
+                      {famille.accroche}
+                    </p>
+                    <p className="mt-3 text-[0.95rem] leading-relaxed text-moka-soft">
+                      {famille.activites.map((activite) => activite.nom).join(" · ")}
+                    </p>
+                    <span className="mt-auto inline-flex items-center gap-2 pt-5 text-[0.95rem] font-semibold">
+                      {activites.decouvrir}
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                      />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Séance découverte offerte                                                  */
+/* -------------------------------------------------------------------------- */
+
+function Decouverte() {
+  const { decouverte } = content.accueil;
+  const { actions } = content;
+
+  return (
+    <section className="csc-dark relative isolate overflow-hidden">
+      <svg
+        viewBox="0 0 400 400"
+        className="absolute -left-40 -top-40 -z-10 size-[34rem] text-creme/10"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="200" cy="200" r="198" />
+        <circle cx="200" cy="200" r="140" />
+        <circle cx="200" cy="200" r="82" />
+      </svg>
+      <div className="csc-container csc-section grid items-center gap-x-16 gap-y-10 lg:grid-cols-[1.1fr_0.9fr]">
+        <Reveal>
+          <SectionHeading
+            light
+            surtitre={decouverte.surtitre}
+            titre={decouverte.titre}
+            texte={decouverte.texte}
+          />
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <DeciplusButton action="decouverte" tone="creme" size="lg" />
+            <ButtonLink to="/activites" hash="ems" tone="outlineLight" size="lg">
+              {decouverte.lienEms}
+            </ButtonLink>
+          </div>
+        </Reveal>
+        <Reveal delay={120}>
+          <figure className="rounded-[1.8rem] border border-creme/20 bg-creme/[0.06] p-7 sm:p-9">
+            <blockquote className="csc-serif text-[1.85rem] leading-[1.15] sm:text-[2.3rem]">
+              « {decouverte.citation} »
+            </blockquote>
+            <figcaption className="mt-5 text-[0.95rem] text-sable-clair">
+              {decouverte.citationSource}
+            </figcaption>
+          </figure>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Formules                                                                   */
+/* -------------------------------------------------------------------------- */
+
+function Formules() {
+  const { formules } = content.accueil;
+  const { tarifs, actions } = content;
+
+  return (
+    <section className="csc-section">
+      <div className="csc-container grid gap-x-16 gap-y-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <Reveal>
+          <SectionHeading
+            surtitre={formules.surtitre}
+            titre={formules.titre}
+            texte={formules.texte}
+          />
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <ButtonLink to="/tarifs" arrow>
+              {actions.voirTarifs}
+            </ButtonLink>
+            <DeciplusButton action="boutique" tone="outline" />
+          </div>
+        </Reveal>
+        <Reveal delay={100}>
+          <ul className="overflow-hidden rounded-[1.6rem] border border-ligne bg-card">
+            {tarifs.abonnements.liste.map((abonnement) => (
+              <li key={abonnement.id} className="border-b border-ligne last:border-b-0">
+                <Link
+                  to="/tarifs"
+                  hash={tarifs.abonnements.ancre}
+                  className="group flex items-center justify-between gap-4 px-5 py-4 transition-colors hover:bg-creme sm:px-7"
+                >
+                  <span>
+                    <span className="block text-[1.05rem] font-semibold tracking-wide">
+                      {abonnement.nom}
+                    </span>
+                    <span className="block text-[0.95rem] text-moka-soft">{abonnement.resume}</span>
+                  </span>
+                  <span className="flex items-baseline gap-1.5 whitespace-nowrap">
+                    <span className="csc-serif text-[1.9rem] leading-none">{abonnement.prix}</span>
+                    <span className="text-[0.9rem] text-moka-soft">
+                      {tarifs.abonnements.parMois}
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[0.9rem] text-moka-soft">
+            {tarifs.abonnements.conditions.join(" · ")}. {tarifs.mention}.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Instagram et note Google                                                   */
+/* -------------------------------------------------------------------------- */
+
+function ReseauxEtAvis() {
+  const { instagram } = content.accueil;
+  const { coordonnees } = content;
+  const tones = ["sable", "moka", "beige", "taupe", "beige", "sable"] as const;
+
+  return (
+    <section className="csc-section border-y border-ligne bg-creme">
+      <div className="csc-container">
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+          <Reveal>
+            <SectionHeading
+              surtitre={instagram.surtitre}
+              titre={instagram.titre}
+              texte={instagram.texte}
+            />
+          </Reveal>
+          <ExternalButton href={coordonnees.instagram.href} tone="outline">
+            <Instagram aria-hidden="true" />
+            {instagram.bouton}
+          </ExternalButton>
+        </div>
+
+        <Reveal className="mt-10">
+          <ul
+            className="grid grid-cols-3 gap-3 sm:gap-4 lg:grid-cols-6"
+            aria-label={instagram.emplacement}
+          >
+            {Array.from({ length: instagram.nombreVignettes }).map((_, index) => (
+              <li key={index}>
+                <Visual
+                  photo={{
+                    src: null,
+                    alt: "",
+                    motif: "instagram",
+                    tone: tones[index % tones.length],
+                  }}
+                  className="aspect-square w-full rounded-2xl"
+                  variant={(index % 4) as 0 | 1 | 2 | 3}
+                  iconSize="sm"
+                />
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[0.9rem] text-moka-soft">{instagram.emplacement}.</p>
+        </Reveal>
+
+        <Reveal className="mt-10 rounded-[1.6rem] border border-ligne bg-blanc px-5 py-5 sm:px-7">
+          <NoteGoogle />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Infos pratiques                                                            */
+/* -------------------------------------------------------------------------- */
+
+function Pratique() {
+  const { pratique } = content.accueil;
+  const { coordonnees, horaires, actions, site } = content;
+
+  return (
+    <section className="csc-section">
+      <div className="csc-container grid gap-x-16 gap-y-10 lg:grid-cols-[1fr_1fr]">
+        <Reveal>
+          <SectionHeading
+            surtitre={pratique.surtitre}
+            titre={pratique.titre}
+            texte={pratique.texte}
+          />
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <DeciplusButton action="reservation" />
+            <ButtonLink to="/contact" tone="outline">
+              {actions.contact}
+            </ButtonLink>
+          </div>
+        </Reveal>
+
+        <Reveal
+          delay={100}
+          className="grid gap-8 rounded-[1.6rem] border border-ligne bg-card p-6 sm:grid-cols-2 sm:p-8"
+        >
+          <div>
+            <h3 className="csc-eyebrow font-sans text-moka-soft">{horaires.titre}</h3>
+            <Horaires className="mt-4 text-[1rem]" />
+          </div>
+          <div>
+            <h3 className="csc-eyebrow font-sans text-moka-soft">{pratique.adresseTitre}</h3>
+            <ul className="mt-4 grid gap-3 text-[1rem]">
+              <li className="flex gap-3">
+                <MapPin aria-hidden="true" className="mt-1 size-4 shrink-0 text-moka" />
+                <Adresse />
+              </li>
+              <li className="flex items-center gap-3">
+                <Phone aria-hidden="true" className="size-4 shrink-0 text-moka" />
+                <a
+                  href={coordonnees.mobile.href}
+                  className="csc-link inline-flex min-h-[32px] items-center whitespace-nowrap"
+                >
+                  {coordonnees.mobile.affichage}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MessageCircle aria-hidden="true" className="size-4 shrink-0 text-moka" />
+                <a
+                  href={coordonnees.whatsapp.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="csc-link inline-flex min-h-[32px] items-center"
+                >
+                  {coordonnees.whatsapp.libelle}
+                  <span className="sr-only"> ({site.nouvelOnglet})</span>
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail aria-hidden="true" className="size-4 shrink-0 text-moka" />
+                <a
+                  href={coordonnees.email.href}
+                  className="csc-link inline-flex min-h-[32px] items-center break-all"
+                >
+                  {coordonnees.email.affichage}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   );
 }

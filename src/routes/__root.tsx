@@ -11,25 +11,22 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { CookieBanner } from "../components/site/cookie-banner";
+import { content } from "../content";
+import { buttonStyles } from "../components/site/cta";
+import { Logo } from "../components/site/logo";
+import { PrefsBanner } from "../components/site/prefs";
 
 function NotFoundComponent() {
+  const { introuvable } = content;
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-creme px-5 py-16">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Cette page n’existe pas</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Le contenu recherché a peut-être été déplacé.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Revenir à l’accueil
-          </Link>
-        </div>
+        <Logo className="mx-auto size-24" />
+        <h1 className="mt-8 text-[2.4rem]">{introuvable.titre}</h1>
+        <p className="mt-3 text-moka-soft">{introuvable.texte}</p>
+        <Link to="/" className={buttonStyles({ className: "mt-7" })}>
+          {introuvable.bouton}
+        </Link>
       </div>
     </div>
   );
@@ -38,34 +35,29 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
+  const { erreur } = content;
   useEffect(() => {
     reportLovableError(error, { boundary: "tanstack_root_error_component" });
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-creme px-5 py-16">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          Cette page n’a pas pu être chargée
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Une erreur est survenue. Tu peux réessayer ou revenir à l’accueil.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <h1 className="text-[2.1rem]">{erreur.titre}</h1>
+        <p className="mt-3 text-moka-soft">{erreur.texte}</p>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
           <button
+            type="button"
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className={buttonStyles()}
           >
-            Réessayer
+            {erreur.reessayer}
           </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Revenir à l’accueil
+          <a href="/" className={buttonStyles({ tone: "outline" })}>
+            {erreur.accueil}
           </a>
         </div>
       </div>
@@ -78,35 +70,39 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Coco Social Club — Sport & bien-être au Moule, Guadeloupe" },
-      {
-        name: "description",
-        content:
-          "Là où le sport rencontre le bien-être. EMS, coaching, yoga, cryolipolyse, massages au Moule en Guadeloupe. Réserve ta séance découverte.",
-      },
-      { name: "author", content: "Coco Social Club" },
-      { property: "og:title", content: "Coco Social Club — Là où le sport rencontre le bien-être" },
-      {
-        property: "og:description",
-        content:
-          "Un lieu unique au Moule pour bouger, se renforcer, se détendre et prendre soin de soi.",
-      },
+      { title: content.site.titreParDefaut },
+      { name: "description", content: content.site.descriptionParDefaut },
+      // Démonstration : le site ne doit pas être référencé par les moteurs de recherche.
+      { name: "robots", content: "noindex, nofollow" },
+      { name: "googlebot", content: "noindex, nofollow" },
+      { name: "theme-color", content: "#5E483D" },
+      { name: "format-detection", content: "telephone=no" },
+      { property: "og:site_name", content: content.site.nom },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Coco Social Club" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:locale", content: "fr_FR" },
+      { property: "og:title", content: content.site.titreParDefaut },
+      { property: "og:description", content: content.site.descriptionParDefaut },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      // Polices servies localement (public/fonts), préchargées pour éviter un saut de texte.
       {
-        rel: "stylesheet",
-        href: appCss,
+        rel: "preload",
+        href: "/fonts/fraunces-latin-opsz-normal.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap",
+        rel: "preload",
+        href: "/fonts/dm-sans-latin-wght-normal.woff2",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
       },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/favicon.ico", sizes: "32x32" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -123,7 +119,6 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
-        <CookieBanner />
         <Scripts />
       </body>
     </html>
@@ -135,8 +130,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      {/* Les pages s'affichent ici. Ne pas retirer <Outlet />. */}
       <Outlet />
+      <PrefsBanner />
     </QueryClientProvider>
   );
 }

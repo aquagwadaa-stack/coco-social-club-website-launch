@@ -1,3 +1,5 @@
+# Démonstration : le site n'est pas destiné à être référencé.
+# Chaque page porte la balise meta robots « noindex, nofollow ».
+# Le robot doit pouvoir lire les pages pour voir cette balise : rien n'est bloqué ici.
 User-agent: *
-Allow: /
-Sitemap: /sitemap.xml
+Disallow:

@@ -5,17 +5,49 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
+ * Polices servies localement (public/fonts), sous licence SIL Open Font License 1.1.
+ * Les textes de licence sont à côté des fichiers.
+ */
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin-opsz-normal.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/fraunces-latin-opsz-italic.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: swap;
+  src: url("/fonts/dm-sans-latin-wght-normal.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+ * Charte Coco Social Club.
  *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * Le bloc @theme inline relie les variables CSS aux classes Tailwind
+ * (par exemple --color-moka -> bg-moka, text-moka).
+ * Les valeurs sont dans :root, au format oklch, avec l'équivalent hexadécimal en commentaire.
+ * Pour changer une couleur du site, il suffit de modifier sa valeur dans :root.
  */
 
 @theme inline {
@@ -59,93 +91,72 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-cream: var(--cream);
-  --color-cream-warm: var(--cream-warm);
-  --color-brown-deep: var(--brown-deep);
+
+  /* Palette du club */
+  --color-espresso: var(--espresso);
+  --color-moka: var(--moka);
+  --color-moka-deep: var(--moka-deep);
+  --color-moka-soft: var(--moka-soft);
   --color-taupe: var(--taupe);
+  --color-sable: var(--sable);
+  --color-sable-clair: var(--sable-clair);
   --color-beige: var(--beige);
-  --color-ice: var(--ice);
-  --font-serif: "Cormorant Garamond", "Bodoni Moda", ui-serif, Georgia, serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --color-creme: var(--creme);
+  --color-blanc: var(--blanc);
+  --color-ligne: var(--ligne);
+
+  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 :root {
   --radius: 1rem;
-  /* Coco palette */
-  --cream: oklch(0.958 0.018 78); /* #F7F0E5 warm cream */
-  --cream-warm: oklch(0.985 0.012 78); /* #FFFDF9 off white */
-  --brown-deep: oklch(0.28 0.028 55); /* #392E27 deep brown */
-  --taupe: oklch(0.68 0.022 40); /* #A8978F rosy taupe */
-  --beige: oklch(0.82 0.033 70); /* #D7C4AE natural beige */
-  --ice: oklch(0.94 0.025 220); /* light iced blue accent */
 
-  --background: var(--cream-warm);
-  --foreground: var(--brown-deep);
+  /* Palette : taupe / moka, crème, blanc, beige chaud. */
+  --espresso: oklch(0.264 0.022 47.9); /* #2E221C  texte */
+  --moka-deep: oklch(0.358 0.03 47.9); /* #4A382F  moka foncé */
+  --moka: oklch(0.422 0.035 47.9); /* #5E483D  moka du logo, couleur principale */
+  --moka-soft: oklch(0.516 0.038 51.8); /* #7A6254  texte secondaire */
+  --taupe: oklch(0.657 0.03 56.5); /* #A08D80  taupe, décor uniquement */
+  --sable: oklch(0.777 0.043 69.5); /* #C9B299  sable */
+  --sable-clair: oklch(0.846 0.038 72.6); /* #DCC9B2  texte secondaire sur moka */
+  --beige: oklch(0.888 0.03 75.7); /* #E6D8C5  beige chaud */
+  --creme: oklch(0.952 0.016 79.4); /* #F5EEE3  crème */
+  --blanc: oklch(0.989 0.006 84.6); /* #FDFBF7  blanc cassé, fond du site */
+  --ligne: oklch(0.884 0.025 75.3); /* #E3D7C7  filets et bordures */
+
+  --background: var(--blanc);
+  --foreground: var(--espresso);
   --card: oklch(1 0 0);
-  --card-foreground: var(--brown-deep);
-  --popover: var(--cream-warm);
-  --popover-foreground: var(--brown-deep);
-  --primary: var(--brown-deep);
-  --primary-foreground: var(--cream-warm);
-  --secondary: var(--cream);
-  --secondary-foreground: var(--brown-deep);
-  --muted: oklch(0.94 0.02 75);
-  --muted-foreground: oklch(0.5 0.02 45);
+  --card-foreground: var(--espresso);
+  --popover: var(--blanc);
+  --popover-foreground: var(--espresso);
+  --primary: var(--moka);
+  --primary-foreground: var(--blanc);
+  --secondary: var(--creme);
+  --secondary-foreground: var(--espresso);
+  --muted: var(--creme);
+  --muted-foreground: var(--moka-soft);
   --accent: var(--beige);
-  --accent-foreground: var(--brown-deep);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.88 0.02 70);
-  --input: oklch(0.9 0.02 70);
-  --ring: var(--taupe);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: var(--cream);
-  --sidebar-foreground: var(--brown-deep);
-  --sidebar-primary: var(--brown-deep);
-  --sidebar-primary-foreground: var(--cream-warm);
+  --accent-foreground: var(--espresso);
+  --destructive: oklch(0.52 0.17 28);
+  --destructive-foreground: var(--blanc);
+  --border: var(--ligne);
+  --input: var(--ligne);
+  --ring: var(--moka);
+  --chart-1: var(--moka);
+  --chart-2: var(--taupe);
+  --chart-3: var(--sable);
+  --chart-4: var(--beige);
+  --chart-5: var(--espresso);
+  --sidebar: var(--creme);
+  --sidebar-foreground: var(--espresso);
+  --sidebar-primary: var(--moka);
+  --sidebar-primary-foreground: var(--blanc);
   --sidebar-accent: var(--beige);
-  --sidebar-accent-foreground: var(--brown-deep);
-  --sidebar-border: oklch(0.88 0.02 70);
-  --sidebar-ring: var(--taupe);
-}
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --sidebar-accent-foreground: var(--espresso);
+  --sidebar-border: var(--ligne);
+  --sidebar-ring: var(--moka);
 }
 
 @layer base {
@@ -153,82 +164,226 @@
     border-color: var(--color-border);
   }
 
+  /*
+   * Densité : tout le site est réglé environ 8 % plus petit qu'un site standard
+   * (textes, titres, boutons, espacements), pour montrer plus de contenu à l'écran.
+   * Les tailles sont en rem : cette seule valeur règle l'ensemble.
+   */
+  html {
+    font-size: 92%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-size: 1.0625rem;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 3px;
-  }
-
-  ::selection {
-    background: var(--beige);
-    color: var(--brown-deep);
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   h1,
   h2,
-  h3,
-  h4,
-  .font-serif {
+  h3 {
     font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-optical-sizing: auto;
+    font-weight: 380;
+    letter-spacing: -0.02em;
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-moka);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-beige);
+    color: var(--color-espresso);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-@utility container-editorial {
-  max-width: 82rem;
+/*
+ * Classes propres au site, toutes préfixées « csc- » :
+ * les noms courants (banner, ad, share…) sont masqués par certains bloqueurs.
+ */
+
+@utility csc-container {
+  width: 100%;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
+
+  @media (min-width: 48rem) {
+    padding-inline: 2.25rem;
+  }
 }
 
-@utility btn-pill {
+@utility csc-section {
+  padding-block: 4rem;
+
+  @media (min-width: 48rem) {
+    padding-block: 5.75rem;
+  }
+}
+
+@utility csc-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+@utility csc-serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-weight: 380;
+  letter-spacing: -0.02em;
+}
+
+/* Section sur fond moka : texte clair et contour de focus clair. */
+@utility csc-dark {
+  background-color: var(--color-moka);
+  color: var(--color-creme);
+
+  & :focus-visible {
+    outline-color: var(--color-creme);
+  }
+
+  & ::selection {
+    background: var(--color-creme);
+    color: var(--color-espresso);
+  }
+}
+
+/* Cadre en arche, repris de la forme ronde du logo. */
+@utility csc-arch {
+  border-radius: 999px 999px 1.25rem 1.25rem;
+}
+
+@utility csc-btn {
   display: inline-flex;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  border-radius: 9999px;
-  padding: 0.9rem 1.6rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: all 0.3s ease;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.7rem 1.45rem;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  & svg {
+    width: 1.05em;
+    height: 1.05em;
+    flex-shrink: 0;
+  }
 }
 
-@utility fade-up {
-  animation: fadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+/* Lien souligné sobre. */
+@utility csc-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.2s ease;
+
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
 }
 
-@keyframes fadeUp {
+/*
+ * Apparition discrète au défilement. L'état initial n'est appliqué que par le script
+ * (composant Reveal) : sans JavaScript, tout reste visible.
+ */
+@utility csc-reveal-wait {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+@utility csc-reveal-run {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes csc-fade-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(12px);
   }
+
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
-@keyframes marquee {
+@utility csc-fade-up {
+  animation: csc-fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes csc-ring-drift {
   from {
-    transform: translateX(0);
+    transform: rotate(0deg);
   }
+
   to {
-    transform: translateX(-50%);
+    transform: rotate(360deg);
   }
 }
 
-@utility marquee {
-  animation: marquee 40s linear infinite;
+@utility csc-ring-drift {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: csc-ring-drift 140s linear infinite;
 }
