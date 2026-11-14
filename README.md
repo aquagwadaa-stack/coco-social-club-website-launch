@@ -32,10 +32,9 @@ Ce que la démonstration ne fait pas :
 
 ## Liens
 
-- Dépôt : `aquagwadaa-stack/coco-social-club-website-launch`, branche de travail `claude/coco-social-club-demo-9a1jfu`.
-- Projet Lovable : <https://lovable.dev/projects/d7cc2a7a-c41d-45e4-855f-82d91324534f>, créé le 14 novembre 2026 avec une page d'attente.
-- Aperçu Lovable : <https://id-preview--d7cc2a7a-c41d-45e4-855f-82d91324534f.lovable.app>
-- Démo publique : à renseigner. Il reste à relier le projet Lovable à GitHub, à y transférer ce site, puis à publier.
+- **Ce dépôt n'est plus le dépôt de référence.** Le site a été transféré le 14 novembre 2026 dans `aquagwadaa-stack/coco-social-club`, branche `main`, reliée au projet Lovable. Les modifications se font là-bas.
+- Démo publique : <https://coco-social-club.lovable.app>
+- Ici : branche de travail `claude/coco-social-club-demo-9a1jfu`, gardée comme archive.
 - Réservation du club : <https://member-app.deciplus.pro/cocosc>
 - Boutique du club : <https://member-app.deciplus.pro/cocosc/shop>
 
