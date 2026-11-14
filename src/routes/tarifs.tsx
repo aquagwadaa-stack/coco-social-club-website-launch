@@ -349,7 +349,9 @@ function Cadeaux() {
         <Reveal>
           <SectionHeading surtitre={cadeaux.surtitre} titre={cadeaux.titre} texte={cadeaux.texte} />
           <div className="mt-8">
-            <DeciplusButton action="offrir" size="lg" />
+            <DeciplusButton action="offrir" size="lg">
+              {content.boutique.cadeaux.bouton}
+            </DeciplusButton>
           </div>
         </Reveal>
         <Reveal delay={100}>

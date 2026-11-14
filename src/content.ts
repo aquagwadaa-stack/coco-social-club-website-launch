@@ -1097,6 +1097,8 @@ const contenus = {
       texte: "Quatre montants au choix. Tu commandes la carte en ligne, sur la boutique du club.",
       montants: ["15 €", "25 €", "50 €", "100 €"],
       precision: "L'achat se fait sur Deciplus, la boutique en ligne du club.",
+      bouton: "Offrir une carte cadeau",
+      etiquette: "Carte cadeau",
       photo: {
         src: null,
         alt: "Carte cadeau du Coco Social Club",
