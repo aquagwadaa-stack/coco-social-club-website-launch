@@ -149,7 +149,7 @@ function CartesCadeaux() {
                 <span className="flex items-center justify-between gap-3">
                   <Logo variant="symbole" className="size-9" />
                   <span className="csc-eyebrow text-moka-soft max-[359px]:hidden">
-                    {cadeaux.surtitre}
+                    {cadeaux.etiquette}
                   </span>
                 </span>
                 <span className="csc-serif text-[2rem] leading-none whitespace-nowrap sm:text-[2.6rem]">
