@@ -133,6 +133,7 @@ const contenus = {
     fermerMenu: "Fermer le menu",
     navigationPrincipale: "Navigation principale",
     navigationPiedDePage: "Pied de page",
+    dansCettePage: "Dans cette page",
   },
 
   /* ------------------------------------------------------------------------ */
@@ -914,13 +915,15 @@ const contenus = {
     },
     mention: "Tarifs indicatifs, à jour sur la boutique",
     mentionDetail:
-      "Les prix ci-dessous ont été relevés le 12 novembre 2026. Ceux de la boutique en ligne du club font foi.",
+      "Les prix de cette page ont été relevés le 12 novembre 2026. Ceux de la boutique en ligne du club font foi.",
     abonnements: {
       ancre: "abonnements",
       surtitre: "Abonnements",
       titre: "Les abonnements *mensuels*",
       conditions: ["Engagement 6 mois", "-10 % sur les soins"],
+      conditionsTitre: "Pour tous les abonnements",
       parMois: "par mois",
+      bouton: "Choisir cette formule",
       liste: [
         {
           id: "coco-pass",
@@ -992,6 +995,7 @@ const contenus = {
       ],
       complement: { nom: "Bilan (coaching salle)", prix: "31 €" },
       nonPropose: "Non proposé",
+      colonneSeance: "Séance",
     },
     soins: {
       ancre: "soins",
@@ -1124,6 +1128,9 @@ const contenus = {
     note: "Les photos du club prendront place ici.",
     photoAVenir: "Photo à venir",
     toutes: "Toutes",
+    filtrer: "Filtrer les photos",
+    resultat: "emplacements affichés",
+    agrandir: "Agrandir",
     categories: [
       { id: "locaux", nom: "Locaux" },
       { id: "ambiance", nom: "Ambiance" },
@@ -1277,6 +1284,9 @@ const contenus = {
     lire: "Lire l'article",
     retour: "Toutes les actualités",
     partager: "Partager cet article",
+    filtrer: "Filtrer les actualités",
+    resultat: "articles affichés",
+    autres: "Les autres articles",
     categories: [
       { id: "nouveautes", nom: "Nouveautés" },
       { id: "evenements", nom: "Événements" },
@@ -1484,6 +1494,8 @@ const contenus = {
         "Cette page de démonstration présente la structure des mentions légales. Les textes définitifs seront rédigés et validés par le club.",
     },
     aFournir: "Texte à fournir et à valider par le club.",
+    sommaire: "Sommaire",
+    retour: "Revenir à l'accueil",
     sections: [
       {
         id: "editeur",
